@@ -2,10 +2,22 @@ body{
     background-color: rgb(35, 39, 234)!important;
 }
 
+.quiz_card{
+    width: 30rem;
+}
+
 .container{
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background-color: rgb(35, 39, 234)!important;
+}
+
+.question_footer{
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 12px;
 }
