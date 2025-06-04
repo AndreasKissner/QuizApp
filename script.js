@@ -71,23 +71,35 @@ function init() {
 
 function showQuestion() {
 
-  if( currentQuestion >= questions.length){
+  if (currentQuestion >= questions.length) {
     document.getElementById("end_screen").style = ''; // CSS wird ausgeblendet Endscreen
     document.getElementById("question_body").style = 'display: none';
 
     document.getElementById("amountOfQuestions").innerHTML = questions.length;
-    document.getElementById("amount_of_right_questions").innerHTML= rightQuestion;
+    document.getElementById("amount_of_right_questions").innerHTML = rightQuestion;
 
     document.getElementById("new_image").src = "img/pokal.png";
-   } else{
-  let question = questions[currentQuestion];
+  } else {//Show Question
 
-  document.getElementById("question_number").innerHTML = currentQuestion + 1;
-  document.getElementById("question_text").innerHTML = question["question"];
-  document.getElementById("answer_1").innerHTML = question["answer_1"];
-  document.getElementById("answer_2").innerHTML = question["answer_2"];
-  document.getElementById("answer_3").innerHTML = question["answer_3"];
-  document.getElementById("answer_4").innerHTML = question["answer_4"];
+
+
+    let percent = (currentQuestion + 1) / questions.length; // +1 weil wir ja bei 0 Anfangen
+    percent = Math.round(percent * 100);
+
+    document.getElementById("progress_bar").innerHTML = `${percent} %`
+    document.getElementById("progress_bar").style = `width: ${percent}%`//Zugrif auf progress_bar id und dort auf Style
+
+
+    console.log("Prozentualer Fortschritt", percent);
+
+    let question = questions[currentQuestion];
+
+    document.getElementById("question_number").innerHTML = currentQuestion + 1;
+    document.getElementById("question_text").innerHTML = question["question"];
+    document.getElementById("answer_1").innerHTML = question["answer_1"];
+    document.getElementById("answer_2").innerHTML = question["answer_2"];
+    document.getElementById("answer_3").innerHTML = question["answer_3"];
+    document.getElementById("answer_4").innerHTML = question["answer_4"];
   }
 }
 
@@ -128,4 +140,16 @@ function resetAnswerButton() {
   document.getElementById("answer_3").parentNode.classList.remove('bg-success');
   document.getElementById("answer_4").parentNode.classList.remove('bg-danger');
   document.getElementById("answer_4").parentNode.classList.remove('bg-success');
+}
+
+function restartGame(){
+   document.getElementById("new_image").src = "img/logo.png";
+     document.getElementById("question_body").style = '';  // Question Body wieder anzeigen
+       document.getElementById("end_screen").style = 'display: none'; //enscreen wieder ausblendne
+   
+rightQuestion = 0;
+
+currentQuestion = 0;
+
+init();
 }
