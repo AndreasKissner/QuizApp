@@ -25,7 +25,12 @@
     <div class="container">
         <div class="card quiz_card">
             <img src="./img/logo.png" class="card-img-top" alt="...">
-            <div class="card-body">
+
+            <div class="card-body" id="end_screen" style="display: none;" >
+                    Quiz beendet!!
+            </div>
+
+            <div class="card-body" id="question_body">
 
                 <h5 class="card-title" id="question_text">Question</h5>
 
@@ -35,19 +40,19 @@
                     </div>
                 </div>
 
-                 <div class="card answer_field mb-2" onclick="answer('answer_2')">
+                <div class="card answer_field mb-2" onclick="answer('answer_2')">
                     <div class="card-body" id="answer_2">
                         Answer
                     </div>
                 </div>
 
-                 <div class="card answer_field mb-2" onclick="answer('answer_3')">
+                <div class="card answer_field mb-2" onclick="answer('answer_3')">
                     <div class="card-body" id="answer_3">
                         Answer
                     </div>
                 </div>
 
-                 <div class="card answer_field mb-2" onclick="answer('answer_4')">
+                <div class="card answer_field mb-2" onclick="answer('answer_4')">
                     <div class="card-body" id="answer_4">
                         Answer
                     </div>
@@ -55,10 +60,11 @@
 
                 <div class="question_footer">
                     <span>
-                    <b>1</b> from <b id="total_questions">5</b> Question
+                        <b id="question_number">1</b> from <b id="total_questions">5</b> Question
 
                     </span>
-                    <button class="btn btn-outline-success">Next question</button>
+                    <button onclick="nextQuestion()" type="button" class="btn btn-outline-success" id="next_button"
+                        disabled>Next question</button>
                 </div>
 
             </div>
@@ -69,4 +75,3 @@
 </body>
 
 </html>
-
