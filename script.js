@@ -61,8 +61,9 @@ let questions = [
 ];
 
 let rightQuestion = 0;
-
 let currentQuestion = 0;
+let AUDIO_SUCCES = new Audio("sound/shine.mp3");
+let AUDIO_FAIL = new Audio("sound/plopp.mp3");
 
 function init() {
   document.getElementById("total_questions").innerHTML = questions.length;// Zähler mit allen Fragen Anzahl
@@ -115,11 +116,13 @@ function answer(auswahl) {//Auswahl steht für gedrückte Antwort
   if (selectedQuestionNumber == question["right_answer"]) { // True
     /*    alert("Right Answer!!");  */
     document.getElementById(auswahl).parentNode.classList.add('bg-success');
+    AUDIO_SUCCES.play();//Audio hinzugetan
     rightQuestion++;
   } else {
     /*  alert("False Answer!!"); */
     document.getElementById(auswahl).parentNode.classList.add('bg-danger');
     document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+     AUDIO_FAIL.play();
   }
   document.getElementById("next_button").disabled = false;
 }
